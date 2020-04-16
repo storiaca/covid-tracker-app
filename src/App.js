@@ -9,15 +9,19 @@ import CountryPicker from "./components/CountryPicker/CountryPicker";
 import styles from "./App.module.css";
 
 class App extends Component {
+  state = {
+    data: {},
+  };
   async componentDidMount() {
-    const data = await fetchData();
-    console.log(data);
+    const fetchedData = await fetchData();
+    this.setState({ data: fetchedData });
   }
   render() {
+    const { data } = this.state;
     return (
       <div className={styles.container}>
+        <Cards data={data} />
         <CountryPicker />
-        <Cards />
         <Chart />
       </div>
     );
