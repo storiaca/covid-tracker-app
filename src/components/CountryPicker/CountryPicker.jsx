@@ -6,7 +6,7 @@ import { NativeSelect, FormControl, StylesProvider } from "@material-ui/core";
 
 import styles from "./CountryPicker.module.css";
 
-const CountryPicker = (props) => {
+const CountryPicker = ({ handleCountry }) => {
   const [fetchedCountries, setFetchedCountries] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const CountryPicker = (props) => {
 
   const optionCountries = fetchedCountries.map((country) => {
     return (
-      <option key={country} value={country.toLowerCase()}>
+      <option key={country} value={country}>
         {country}
       </option>
     );
@@ -26,7 +26,10 @@ const CountryPicker = (props) => {
 
   return (
     <FormControl className={StylesProvider.formControl}>
-      <NativeSelect>
+      <NativeSelect
+        defaultValue=""
+        onChange={(e) => handleCountry(e.target.value)}
+      >
         <option value="global">Global</option>
         {optionCountries}
       </NativeSelect>
