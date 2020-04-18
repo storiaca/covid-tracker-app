@@ -30,7 +30,7 @@ const CountryPicker = ({ handleCountry }) => {
         defaultValue=""
         onChange={(e) => handleCountry(e.target.value)}
       >
-        <option value="global">Global</option>
+        <option value="">Global</option>
         {optionCountries}
       </NativeSelect>
     </FormControl>
